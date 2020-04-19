@@ -2,7 +2,7 @@
   <div>
     home
     <j-button>aa</j-button>
-    <j-icon name='j-right'></j-icon>
+    <cc-icon name='cc-edit'></cc-icon>
   </div>
 </template>
 

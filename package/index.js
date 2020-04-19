@@ -11,7 +11,7 @@ const components = [
   icon,
 ]
 
-let CC = {
+let JJ = {
   install (Vue) {
     components.forEach(component => {
       Vue.component(component.name, component);
@@ -19,7 +19,7 @@ let CC = {
   }
 };
 
-export default CC;
+export default JJ;
 
 export {
   button,

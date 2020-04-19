@@ -19,7 +19,7 @@
 </template>
 <script>
 export default {
-  name: "jIcon",
+  name: "ccIcon",
   props: {
     color: String,
     disabled: Boolean,
