@@ -1,0 +1,158 @@
+@import '../config/index.scss';
+@import '../common/var.scss';
+
+@mixin commonShadow($color,$size:2px) {
+  @if $color== 'success' {
+    $color: $--color-success;
+  }
+
+  @if $color== 'warning' {
+    $color: $--color-warning;
+  }
+
+  @if $color== 'danger' {
+    $color: $--color-danger;
+  }
+
+  @if $color== 'disabled' {
+    cursor: not-allowed;
+    $color: $--color-disabled;
+  }
+
+  color: $color;
+  border: 1px solid $color;
+  box-shadow: $size $size $color;
+}
+
+@mixin commonType($name) {
+  @each $type in (success, warning, danger) {
+    .#{$name}#{$type} {
+      @include commonShadow($type);
+    }
+  }
+}
+
+@mixin b($block) {
+  // !global与!defult相对立, 优先与默认编译
+  $B: $namespace + '-' + $block !global;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
+
+@mixin brother($name) {
+  &>&#{-$name} {
+    @content;
+  }
+}
+
+@mixin e($name) {
+  &#{$cc-separator}#{$name} {
+    @content;
+  }
+}
+
+@mixin m($name) {
+  &#{$cc-modifier-separator}#{$name} {
+    @content;
+  }
+}
+
+
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin position($position: absolute, $long: 0) {
+  margin: auto;
+  position: $position;
+  top: $long;
+  left: $long;
+  right: $long;
+  bottom: $long;
+}
+
+@mixin flexCenter ($direction:column) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+
+
+@mixin triangleAfter ($where){
+  &::after{
+    content: '';
+    position: absolute;
+    border: 6px solid white;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    @if $where== 'top' {
+      bottom: -11px;
+      border-top-color: white;
+    }
+    @if $where== 'right' {
+      left: -11px;
+      border-right-color:white;
+    }
+    @if $where== 'left' {
+      right: -11px;
+      border-left-color:white;
+    }
+    @if $where== 'bottom' {
+      top: -11px;
+      border-bottom-color: white;
+    }
+    @content;
+  };
+}
+@mixin triangleBefore ($where){
+  &::before{
+    content: '';
+    position: absolute;
+    border: 6px solid rgb(172, 171, 171);
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    @if $where== 'top' {
+      bottom: -12px;
+      border-top-color: rgb(172, 171, 171);
+    }
+    @if $where== 'right' {
+      left:-12px;
+      border-right-color: rgb(172, 171, 171);
+    }
+    @if $where== 'left' {
+      right: -12px;
+      border-left-color: rgb(172, 171, 171);
+    }
+    @if $where== 'bottom' {
+      top: -12px;
+      border-bottom-color: rgb(172, 171, 171);
+    }
+    @content;
+  };
+}

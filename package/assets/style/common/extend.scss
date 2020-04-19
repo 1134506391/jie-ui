@@ -1,0 +1,30 @@
+@import './var.scss';
+@import './animation.scss';
+
+.cc-bling {
+    &:after {
+        content: '';
+        position: absolute;
+        animation: bling 1s infinite linear;
+        background-image: linear-gradient(to right, rgb(232, 229, 229), white);
+        left: 0;
+        top: -20px;
+        width: 15px;
+        height: calc(100% + 30px);
+        transform: rotate(-30deg);
+    }
+}
+
+.active-item {
+    color: $--color-white;
+    background-color: $--color-nomal;
+    border-radius: 10px;
+}
+
+.check-ball{
+    display: inline-block;
+    width: .5em;
+    height: .5em;
+    margin:0 5px; 
+    border-radius: 100%;
+}
